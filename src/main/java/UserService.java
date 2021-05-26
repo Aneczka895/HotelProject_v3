@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -7,22 +6,30 @@ public class UserService {
         private Hotel hotel = new Hotel();
         private Room room;
 
-        //1. Pobierz listę wszystkich pokoi
+        //1. Pobierz listę wszystkich pokoi wraz z ich statusem (wolny-zajęty)
         public List<Room> getRooms() {
             return hotel.getRooms();
         }
 
+        public void getRoomsAndStatus() {
+            List<Room> rooms = getRooms();
+            for (Room room : rooms) {
+                System.out.println("Numer pokoju: " + room.getRoomNumber() + "\nCzy pokój jest dostępny " +room.isAvailable());
+            }
+        }
+
         //2. Pobierz listę wszystkich dostępnych pokoi
-    public List<Room> getAllAvailableRooms() {
-            return getRooms().stream()
+    public List<Integer> getAllAvailableRooms() {
+            return hotel.getRooms().stream()
                     .filter(room -> room.isAvailable())
+                    .map(room -> room.getRoomNumber())
                     .collect(Collectors.toList());
     }
 
 
         //3. Rezerwuj pokój (podaj nr pokoju i jeśli jest dostępny to go zarezerwuj).
         public void reserveRoomIfFree(int roomNumber) {
-            for (Room room : getRooms()) {
+            for (Room room : hotel.getRooms()) {
                 if (room.getRoomNumber() == roomNumber && room.isAvailable()) {
                     System.out.println("Zarezerwowano pokój numer " + room.getRoomNumber());
                     room.setAvailable(false);
@@ -39,7 +46,7 @@ public class UserService {
 
         //4. Zwolnij pokój (podaj nr pokoju i jesli jest zajety, to go zwolnij)
         public void freeYourRoom(int roomNumber) {
-            for (Room room : getRooms()) {
+            for (Room room : hotel.getRooms()) {
                 if (room.getRoomNumber() == roomNumber && !room.isAvailable()) {
                     room.setAvailable(true);
                     System.out.println("Zwolniono pokój numer: " + room.getRoomNumber());
