@@ -12,4 +12,34 @@ public class Room {
             this.isAvailable = isAvailable;
         }
 
+
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+
+    public int getHowManyPeople() {
+        return howManyPeople;
+    }
+
+    public boolean isHasBathroom() {
+        return hasBathroom;
+    }
+
+    @Override
+    public String toString() {
+        return "Room{" +
+                "roomNumber=" + roomNumber +
+                ", howManyPeople=" + howManyPeople +
+                ", hasBathroom=" + hasBathroom +
+                ", isAvailable=" + isAvailable +
+                '}';
+    }
 }

@@ -11,7 +11,7 @@ public class Hotel {
         Room room2 = new Room(2, 1, false, true);
         Room room3 = new Room(3, 4, true, false);
         Room room4 = new Room(4, 6, true, true);
-        Room room5 = new Room(5,5,  true, true);
+        Room room5 = new Room(5, 5, true, true);
         Room room6 = new Room(6, 6, true, true);
         Room room7 = new Room(7, 6, true, true);
         Room room8 = new Room(8, 6, true, true);
@@ -28,6 +28,18 @@ public class Hotel {
         rooms.add(room8);
         rooms.add(room9);
         rooms.add(room10);
-
     }
-}
+
+    public List<Room> getRooms() {
+        return new ArrayList<>(rooms);
+    }
+
+
+        @Override
+        public String toString() {
+            return "Hotel{" +
+                    "rooms=" + rooms +
+                    '}';
+        }
+    }
+
