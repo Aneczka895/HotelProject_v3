@@ -5,6 +5,7 @@ public class Hotel {
     private List<Room> rooms = new ArrayList<>();
 
 
+
     public Hotel() {
 
         Room room1 = new Room(1, 3, true, false);
@@ -31,15 +32,15 @@ public class Hotel {
     }
 
     public List<Room> getRooms() {
-        return new ArrayList<>(rooms);
+        return rooms;
     }
 
 
-        @Override
-        public String toString() {
-            return "Hotel{" +
-                    "rooms=" + rooms +
-                    '}';
-        }
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "rooms=" + rooms +
+                '}';
     }
+}
 

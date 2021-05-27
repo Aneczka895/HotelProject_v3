@@ -2,7 +2,8 @@ import java.util.Scanner;
 
 public class Main {
     private Scanner scanner = new Scanner(System.in);
-    private UserService userService;
+    private UserService userService = new UserService();
+    private Hotel hotel = new Hotel();
 
     public static void main(String[] args) {
         //W klasie main utwórz proste menu do obsługi hotelu, przykłady implementacji (prosta pętla
@@ -20,9 +21,9 @@ public class Main {
 
 
     public void display() {
-        System.out.println("======Hotel Menu=======");
+        System.out.println("\n======Hotel Menu=======");
         System.out.println(
-                "Wybierz jedną z podanych opcji: \n " +
+                "Wybierz jedną z podanych opcji: \n" +
                         "1) Wyświetl listę pokoi wraz z ich statusem (wolny-zajęty) \n" +
                         "2) Wyświetl listę tylko dostępnych pokoi \n" +
                         "3) Zarezerwuj pokój \n" +
@@ -35,17 +36,22 @@ public class Main {
             switch (selection) {
                 case 1:
                     System.out.println("Lista pokoi wraz z ich statusem (wolny-zajęty)");
-                    //TODO: Dodać na koniec hotelService.funkcja we wszystkich czterech przypadkach
+                    userService.getRoomsAndStatus();
                     break;
                 case 2:
-                    System.out.println("Lista tylko dostępnych pokoi");
+                    System.out.println("Lista dostępnych pokoi");
+                    System.out.println(userService.getAllAvailableRooms());
                     break;
                 case 3:
-                    System.out.println("Rezerwacja pokoju");
+                    System.out.println("Rezerwacja pokoju.");
+                    userService.reserveRoomIfFree();
                     break;
+                //TODO: isAvailable nie jest na razie ustawiane na stałe w Hotel
                 case 4:
                     System.out.println("Zwolnienie pokoju");
+                    userService.freeYourRoom();
                     break;
+                //TODO: isAvailable nie jest na razie ustawiane na stałe w Hotel
                 case 5:
                     exit();
                 default:
