@@ -11,15 +11,16 @@ public class Main {
         //1. https://stackoverflow.com/a/13536215/5877109
         //2. http://chronicles.blog.ryanrampersad.com/2011/03/text-based-menu-in-java/
 
+        Main main = new Main();
         do {
-            Main main = new Main();
-            main.display();
+            main.displayMenu();
         } while (true);
 
     } //end main
 
 
-    public void display() {
+    public void displayMenu() {
+
         System.out.println("\n======Hotel Menu=======");
         System.out.println(
                 "Wybierz jedną z podanych opcji: \n" +
@@ -29,6 +30,10 @@ public class Main {
                         "4) Zwolnij pokój \n" +
                         "5) Wyjdź z programu"
         );
+        selectOption();
+    }
+
+    public void selectOption() {
         try {
             int selection = scanner.nextInt();
             scanner.nextLine();
@@ -45,12 +50,10 @@ public class Main {
                     System.out.println("Rezerwacja pokoju.");
                     userService.reserveRoomIfFree();
                     break;
-                //TODO: isAvailable nie jest na razie ustawiane na stałe w Hotel
                 case 4:
                     System.out.println("Zwolnienie pokoju");
                     userService.freeYourRoom();
                     break;
-                //TODO: isAvailable nie jest na razie ustawiane na stałe w Hotel
                 case 5:
                     exit();
                 default:
@@ -60,8 +63,6 @@ public class Main {
         } catch (NumberFormatException ex) {
             System.out.println("Dopuszczalne są tylko cyfry od 1 do 4. Nie używaj innych znaków");
         }
-
-
     }
 
     private static void exit() {

@@ -25,13 +25,6 @@ public class Room {
         return roomNumber;
     }
 
-    public int getHowManyPeople() {
-        return howManyPeople;
-    }
-
-    public boolean isHasBathroom() {
-        return hasBathroom;
-    }
 
     @Override
     public String toString() {
