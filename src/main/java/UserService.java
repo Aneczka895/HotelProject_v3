@@ -6,16 +6,44 @@ public class UserService {
 
     private Hotel hotel = new Hotel();
 
+    public List<Room> getRooms() {
+        return hotel.getRooms();
+    }
+
     //1. Pobierz listę wszystkich pokoi wraz z ich statusem (wolny-zajęty)
+    public void getRoomsAndStatus() {
+        hotel.getRoomsAndStatus();
+    }
+
+
+    //2. Pobierz listę wszystkich dostępnych pokoi
+    public List<Integer> getAllAvailableRooms() {
+        return hotel.getAllAvailableRooms();
+    }
+
+    //3. Rezerwuj pokój (podaj nr pokoju i jeśli jest dostępny to go zarezerwuj).
+    public void reserveRoomIfFree() {
+        hotel.reserveRoomIfFree();
+    }
+
+
+    //4. Zwolnij pokój (podaj nr pokoju i jesli jest zajety, to go zwolnij)
+    public void freeYourRoom() {
+       hotel.freeYourRoom();
+    }
+
+
+
+    /*//1. Pobierz listę wszystkich pokoi wraz z ich statusem (wolny-zajęty)
     public List<Room> getRooms() {
         return hotel.getRooms();
     }
 
     public void getRoomsAndStatus() {
-        /*List<Room> rooms = getRooms();
+        *//*List<Room> rooms = getRooms();
         for (Room room : rooms) {
             System.out.println("Numer pokoju: " + room.getRoomNumber() + " Dostępny: " + room.isAvailable());
-        }*/
+        }*//*
        getRooms().stream()
                 .forEach(room -> System.out.println("Numer pokoju: " + room.getRoomNumber() + " Dostępny? = " + room.isAvailable()));
     }
@@ -46,10 +74,10 @@ public class UserService {
         System.out.println("Nie dało się zarezerwować podanego numeru pokoju, bo był już zajęty");
     }
 
-/*        hotel.reserveRoomIfFree(10);
+*//*        hotel.reserveRoomIfFree(10);
         hotel.reserveRoomIfFree(10);
         hotel.roomCheckout(10);
-        hotel.reserveRoomIfFree(10);*/
+        hotel.reserveRoomIfFree(10);*//*
 
     //4. Zwolnij pokój (podaj nr pokoju i jesli jest zajety, to go zwolnij)
     public void freeYourRoom() {
@@ -64,7 +92,7 @@ public class UserService {
             }
         }
         System.out.println("Pokoju numer " + roomNumber + " nie dało się zwolnić, bo nie był zajęty");
-    }
+    }*/
 
     @Override
     public String toString() {

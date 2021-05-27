@@ -3,7 +3,6 @@ import java.util.Scanner;
 public class Main {
     private Scanner scanner = new Scanner(System.in);
     private UserService userService = new UserService();
-    private Hotel hotel = new Hotel();
 
     public static void main(String[] args) {
         //W klasie main utwórz proste menu do obsługi hotelu, przykłady implementacji (prosta pętla
