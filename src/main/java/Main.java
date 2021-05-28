@@ -5,11 +5,6 @@ public class Main {
     private UserService userService = new UserService();
 
     public static void main(String[] args) {
-        //W klasie main utwórz proste menu do obsługi hotelu, przykłady implementacji (prosta pętla
-        //do…while + switch):
-
-        //1. https://stackoverflow.com/a/13536215/5877109
-        //2. http://chronicles.blog.ryanrampersad.com/2011/03/text-based-menu-in-java/
 
         Main main = new Main();
         do {

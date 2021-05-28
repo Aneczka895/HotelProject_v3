@@ -152,8 +152,6 @@ public class UserService {
     }
 
 
-
-
     //4. Zwolnij pokój (podaj nr pokoju i jesli jest zajety, to go zwolnij). Jeśli gość się wymelduje, pokój zmienia
     // status na nieposprzątany.
 

@@ -71,6 +71,8 @@ public class Room {
                 ", isAvailable=" + isAvailable +
                 ", guestsInRoom=" + guestsInRoom +
                 ", clean=" + clean +
+                ", checkInDate=" + checkInDate +
+                ", checkOutDate=" + checkOutDate +
                 '}';
     }
 }
