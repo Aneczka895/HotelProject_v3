@@ -25,11 +25,23 @@ public class UserService {
     }
 
     //2. Pobierz listę wszystkich dostępnych pokoi. Nieposprzątanego pokoju nie można zarezerwować pomimo że jest wolny.
-    public List<Integer> getAllAvailableRooms() {
-        return rooms.stream()
+    public void getAllAvailableRooms() {
+        int availableCount = 0;
+        for (Room room : rooms) {
+            if (room.isAvailable() && room.isClean()) {
+                System.out.println("Pokój numer " + room.getRoomNumber() + " Ile osób: " + room.getHowManyPeople());
+                availableCount++;
+            }
+
+        }
+        if (availableCount == 0) {
+            System.out.println("Wszystkie pokoje są obecnie zajęte lub nieposprzątane");
+        }
+
+       /* return rooms.stream()
                 .filter(room -> room.isAvailable() && room.isClean())
                 .map(room -> room.getRoomNumber())
-                .collect(Collectors.toList());
+                .collect(Collectors.toList());*/
     }
 
     public List<Room> printListOfDirtyRooms() {
@@ -115,12 +127,20 @@ public class UserService {
     //Nieposprzątanego pokoju nie można zarezerwować pomimo że jest wolny
 
     public void reserveRoomIfFree() {
-        System.out.println("Podaj numer pokoju, który chcesz zarezerwować. Oto lista dostępnych pokoi: " + getAllAvailableRooms());
+        System.out.println("Podaj numer pokoju, który chcesz zarezerwować. Oto lista dostępnych pokoi:\n");
+        getAllAvailableRooms();
         int roomNumber = Integer.parseInt(scanner.next());
         scanner.nextLine();
         for (Room room : rooms) {
             if (room.isAvailable() && room.isClean() && room.getRoomNumber() == roomNumber) {
                 room.setAvailable(false);
+                System.out.println("Podaj datę zameldowania w formacie YYYY-MM-DD");
+                String checkInDate = scanner.nextLine();
+                System.out.println("Podaj datę wymeldowania w formacie YYYY-MM-DD");
+                String checkOutDate = scanner.nextLine();
+                scanner.nextLine();
+                room.setCheckInDate(checkInDate);
+                room.setCheckOutDate(checkOutDate);
                 room.setGuestsInRoom(temporaryGuestsList);
                 temporaryGuestsList = new ArrayList<>();
                 System.out.println("Zarezerwowano pokój numer " + room.getRoomNumber());
@@ -129,6 +149,8 @@ public class UserService {
         }
         System.out.println("Nie dało się zarezerwować podanego numeru pokoju, bo był nieposprzątany lub zajęty");
     }
+
+
 
 
     //4. Zwolnij pokój (podaj nr pokoju i jesli jest zajety, to go zwolnij). Jeśli gość się wymelduje, pokój zmienia
@@ -150,6 +172,9 @@ public class UserService {
         System.out.println("Pokoju numer " + roomNumber + " nie dało się zwolnić, bo nie był zajęty");
     }
 
+    public void printListOfOccupiedRooms() {
+
+    }
 
     @Override
     public String toString() {
@@ -158,6 +183,7 @@ public class UserService {
                 ", rooms=" + rooms +
                 '}';
     }
+
 }
 
 

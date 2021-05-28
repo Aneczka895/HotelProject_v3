@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,6 +10,9 @@ public class Room {
     private boolean isAvailable;
     private List<Guest> guestsInRoom = new ArrayList<>();
     private boolean clean = true;
+    private LocalDate checkInDate;
+    private LocalDate checkOutDate;
+
 
     public Room(int roomNumber, int howManyPeople, boolean hasBathroom, boolean isAvailable) {
         this.roomNumber = roomNumber;
@@ -30,6 +34,9 @@ public class Room {
         return roomNumber;
     }
 
+    public int getHowManyPeople() {
+        return howManyPeople;
+    }
 
     public void setGuestsInRoom(List<Guest> guestsInRoom) {
         this.guestsInRoom = guestsInRoom;
@@ -41,6 +48,14 @@ public class Room {
 
     public void setClean(boolean clean) {
         this.clean = clean;
+    }
+
+    public void setCheckInDate(String checkInDate) {
+        this.checkInDate = LocalDate.parse(checkInDate);
+    }
+
+    public void setCheckOutDate(String checkOutDate) {
+        this.checkOutDate = LocalDate.parse(checkOutDate);
     }
 
     @Override

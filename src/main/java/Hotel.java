@@ -1,3 +1,4 @@
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -9,16 +10,16 @@ public class Hotel {
 
     public Hotel() {
 //this constructor runs every time a Hotel instance is created
-        Room room1 = new Room(1, 3, true, false);
-        Room room2 = new Room(2, 1, false, true);
-        Room room3 = new Room(3, 4, true, false);
-        Room room4 = new Room(4, 6, true, true);
-        Room room5 = new Room(5, 5, true, true);
-        Room room6 = new Room(6, 6, true, true);
-        Room room7 = new Room(7, 6, true, true);
-        Room room8 = new Room(8, 6, true, true);
-        Room room9 = new Room(9, 6, true, true);
-        Room room10 = new Room(10, 6, true, true);
+        Room room1 = new Room(1, 2, true, true);
+        Room room2 = new Room(2, 3, false, true);
+        Room room3 = new Room(3, 4, true, true);
+        Room room4 = new Room(4, 2, true, true);
+        Room room5 = new Room(5, 3, true, true);
+        Room room6 = new Room(6, 4, true, true);
+        Room room7 = new Room(7, 2, true, true);
+        Room room8 = new Room(8, 3, true, true);
+        Room room9 = new Room(9, 4, true, true);
+        Room room10 = new Room(10, 2, true, true);
 
         rooms.add(room1);
         rooms.add(room2);

@@ -29,7 +29,8 @@ public class Main {
                         "3) Zarezerwuj pokój \n" +
                         "4) Zwolnij pokój \n" +
                         "5) Wyświetl listę pokoi do posprzątania \n" +
-                        "6) Wyjdź z programu"
+                        "6) Wyświetl listę zajętych pokoi wraz z datą opuszczenia pokoju \n" +
+                        "7) Wyjdź z programu"
         );
         selectOption();
     }
@@ -45,7 +46,7 @@ public class Main {
                     break;
                 case 2:
                     System.out.println("Lista dostępnych pokoi");
-                    System.out.println(userService.getAllAvailableRooms());
+                    userService.getAllAvailableRooms();
                     break;
                 case 3:
                     System.out.println("Rezerwacja pokoju. Minimum jedna osoba musi być pełnoletnia.");
@@ -56,10 +57,14 @@ public class Main {
                     userService.freeYourRoom();
                     break;
                 case 5:
-                    System.out.println("Wyświetl listę pokoi do posprzątania");
                     userService.printListOfDirtyRooms();
                     break;
                 case 6:
+                    System.out.println("Lista zajętych pokoi");
+                    userService.printListOfOccupiedRooms();
+                    break;
+
+                case 7:
                     exit();
                 default:
                     System.out.println("Proszę podać numer opcji od 1 do 4");
