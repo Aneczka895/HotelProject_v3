@@ -47,8 +47,8 @@ public class Main {
                     System.out.println(userService.getAllAvailableRooms());
                     break;
                 case 3:
-                    System.out.println("Rezerwacja pokoju.");
-                    userService.reserveRoomIfFree();
+                    System.out.println("Rezerwacja pokoju. Minimum jedna osoba musi być pełnoletnia.");
+                    userService.reserveRoomIfFreeAndOneAdultPresent();
                     break;
                 case 4:
                     System.out.println("Zwolnienie pokoju");

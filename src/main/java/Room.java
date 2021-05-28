@@ -1,9 +1,13 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class Room {
 
     private int roomNumber;
     private int howManyPeople;
     private boolean hasBathroom;
     private boolean isAvailable;
+    private List<Guest> guestsInRoom = new ArrayList<>();
 
     public Room(int roomNumber, int howManyPeople, boolean hasBathroom, boolean isAvailable) {
         this.roomNumber = roomNumber;
@@ -25,6 +29,13 @@ public class Room {
         return roomNumber;
     }
 
+    public List<Guest> getGuestsInRoom() {
+        return guestsInRoom;
+    }
+
+    public void setGuestsInRoom(List<Guest> guestsInRoom) {
+        this.guestsInRoom = guestsInRoom;
+    }
 
     @Override
     public String toString() {
@@ -33,6 +44,7 @@ public class Room {
                 ", howManyPeople=" + howManyPeople +
                 ", hasBathroom=" + hasBathroom +
                 ", isAvailable=" + isAvailable +
+                ", guestsInRoom=" + guestsInRoom +
                 '}';
     }
 }
