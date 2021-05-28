@@ -172,7 +172,7 @@ public class UserService {
     }
 
     public void printListOfOccupiedRooms() {
-        rooms.stream()
+       rooms.stream()
                 .filter(room -> !room.isAvailable())
                 .forEach(room -> System.out.println("Pokój numer: " + room.getRoomNumber() + " Data wymeldowania: " + room.getCheckOutDate()));
 
