@@ -8,6 +8,7 @@ public class Room {
     private boolean hasBathroom;
     private boolean isAvailable;
     private List<Guest> guestsInRoom = new ArrayList<>();
+    private boolean clean = true;
 
     public Room(int roomNumber, int howManyPeople, boolean hasBathroom, boolean isAvailable) {
         this.roomNumber = roomNumber;
@@ -34,6 +35,14 @@ public class Room {
         this.guestsInRoom = guestsInRoom;
     }
 
+    public boolean isClean() {
+        return clean;
+    }
+
+    public void setClean(boolean clean) {
+        this.clean = clean;
+    }
+
     @Override
     public String toString() {
         return "Room{" +
@@ -42,6 +51,7 @@ public class Room {
                 ", hasBathroom=" + hasBathroom +
                 ", isAvailable=" + isAvailable +
                 ", guestsInRoom=" + guestsInRoom +
+                ", clean=" + clean +
                 '}';
     }
 }
