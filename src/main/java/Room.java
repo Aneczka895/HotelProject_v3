@@ -58,6 +58,10 @@ public class Room {
         this.checkOutDate = LocalDate.parse(checkOutDate);
     }
 
+    public LocalDate getCheckOutDate() {
+        return checkOutDate;
+    }
+
     @Override
     public String toString() {
         return "Room{" +

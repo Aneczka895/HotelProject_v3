@@ -10,7 +10,7 @@ public class Hotel {
 
     public Hotel() {
 //this constructor runs every time a Hotel instance is created
-        Room room1 = new Room(1, 2, true, true);
+        Room room1 = new Room(1, 1, true, true);
         Room room2 = new Room(2, 3, false, true);
         Room room3 = new Room(3, 4, true, true);
         Room room4 = new Room(4, 2, true, true);
@@ -19,7 +19,7 @@ public class Hotel {
         Room room7 = new Room(7, 2, true, true);
         Room room8 = new Room(8, 3, true, true);
         Room room9 = new Room(9, 4, true, true);
-        Room room10 = new Room(10, 2, true, true);
+
 
         rooms.add(room1);
         rooms.add(room2);
@@ -30,7 +30,7 @@ public class Hotel {
         rooms.add(room7);
         rooms.add(room8);
         rooms.add(room9);
-        rooms.add(room10);
+
     }
 
     public List<Room> getRooms() {
