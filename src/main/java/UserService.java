@@ -32,6 +32,36 @@ public class UserService {
                 .collect(Collectors.toList());
     }
 
+    public List<Room> printListOfDirtyRooms() {
+        List<Room> dirtyRooms = rooms.stream()
+                .filter(room -> !room.isClean())
+                .collect(Collectors.toList());
+        if (dirtyRooms.isEmpty()) {
+            System.out.println("W tym momencie nie ma pokoi do sprzątania");
+            return null;
+        }
+        System.out.println("Lista nieposprzątanych pokoi:\n" + dirtyRooms);
+        System.out.println("Który pokój chcesz posprzątać? Podaj -1, jeśli nie chcesz sprzątać pokoi.");
+        int roomToClean = scanner.nextInt();
+        scanner.nextLine();
+        if (roomToClean == -1) {
+            return null;
+        }
+        cleanTheRoom(roomToClean);
+        return dirtyRooms;
+
+    }
+
+    public void cleanTheRoom(int roomNumber) {
+        for (Room room : rooms) {
+            if (room.getRoomNumber() == roomNumber) {
+                room.setClean(true);
+                System.out.println("Pokój numer " + room.getRoomNumber() + " został posprzątany");
+            }
+        }
+    }
+
+
     //3. Rezerwuj pokój (podaj nr pokoju & gości - jeśli jest dostępny i przynajmniej jedna osoba jest pełnoletnia to
     // go zarezerwuj).
 
@@ -112,6 +142,7 @@ public class UserService {
             if (room.getRoomNumber() == roomNumber && !room.isAvailable()) {
                 room.setAvailable(true);
                 room.setClean(false);
+                room.setGuestsInRoom(null); //nie ma gości w pokoju po wymeldowaniu
                 System.out.println("Zwolniono pokój numer: " + room.getRoomNumber());
                 return;
             }
@@ -119,13 +150,6 @@ public class UserService {
         System.out.println("Pokoju numer " + roomNumber + " nie dało się zwolnić, bo nie był zajęty");
     }
 
-    public void cleanTheRoom(int roomNumber) {
-        for (Room room : rooms) {
-            if (room.getRoomNumber() == roomNumber) {
-                room.setClean(true);
-            }
-        }
-    }
 
     @Override
     public String toString() {

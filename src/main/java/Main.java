@@ -28,7 +28,8 @@ public class Main {
                         "2) Wyświetl listę tylko dostępnych pokoi \n" +
                         "3) Zarezerwuj pokój \n" +
                         "4) Zwolnij pokój \n" +
-                        "5) Wyjdź z programu"
+                        "5) Wyświetl listę pokoi do posprzątania \n" +
+                        "6) Wyjdź z programu"
         );
         selectOption();
     }
@@ -55,6 +56,10 @@ public class Main {
                     userService.freeYourRoom();
                     break;
                 case 5:
+                    System.out.println("Wyświetl listę pokoi do posprzątania");
+                    userService.printListOfDirtyRooms();
+                    break;
+                case 6:
                     exit();
                 default:
                     System.out.println("Proszę podać numer opcji od 1 do 4");
