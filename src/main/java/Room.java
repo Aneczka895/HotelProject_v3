@@ -29,9 +29,6 @@ public class Room {
         return roomNumber;
     }
 
-    public List<Guest> getGuestsInRoom() {
-        return guestsInRoom;
-    }
 
     public void setGuestsInRoom(List<Guest> guestsInRoom) {
         this.guestsInRoom = guestsInRoom;
