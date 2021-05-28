@@ -24,7 +24,7 @@ public class UserService {
                 .forEach(room -> System.out.println("Numer pokoju: " + room.getRoomNumber() + " Dostępny? = " + room.isAvailable()));
     }
 
-    //2. Pobierz listę wszystkich dostępnych pokoi
+    //2. Pobierz listę wszystkich dostępnych pokoi. Nieposprzątanego pokoju nie można zarezerwować pomimo że jest wolny.
     public List<Integer> getAllAvailableRooms() {
         return rooms.stream()
                 .filter(room -> room.isAvailable() && room.isClean())
@@ -119,10 +119,19 @@ public class UserService {
         System.out.println("Pokoju numer " + roomNumber + " nie dało się zwolnić, bo nie był zajęty");
     }
 
+    public void cleanTheRoom(int roomNumber) {
+        for (Room room : rooms) {
+            if (room.getRoomNumber() == roomNumber) {
+                room.setClean(true);
+            }
+        }
+    }
+
     @Override
     public String toString() {
         return "UserService{" +
                 "hotel=" + hotel +
+                ", rooms=" + rooms +
                 '}';
     }
 }
