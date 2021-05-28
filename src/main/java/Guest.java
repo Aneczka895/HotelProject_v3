@@ -12,4 +12,12 @@ public class Guest {
     public LocalDate getBirthday() {
         return birthday;
     }
+
+    @Override
+    public String toString() {
+        return "Guest{" +
+                "name='" + name + '\'' +
+                ", birthday=" + birthday +
+                '}';
+    }
 }

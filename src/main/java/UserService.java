@@ -1,5 +1,6 @@
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -63,10 +64,17 @@ public class UserService {
             if (guestName.equals("-1")) {
                 return temporaryGuestsList;
             }
-            System.out.println("Podaj urodziny gościa w formacie YYYY-MM-DD");
-            String guestBirthday = scanner.nextLine();
-            Guest guest = new Guest(guestName, guestBirthday);
-            temporaryGuestsList.add(guest);
+
+            try {
+                System.out.println("Podaj urodziny gościa w formacie YYYY-MM-DD");
+                String guestBirthday = scanner.nextLine();
+                Guest guest = new Guest(guestName, guestBirthday);
+                temporaryGuestsList.add(guest);
+                System.out.println(temporaryGuestsList);
+            } catch (DateTimeParseException e) {
+                System.out.println("Data urodzenia musi być w formacie YYYY-MM-DD");
+            }
+
         } while (true);
     }
 
@@ -90,8 +98,9 @@ public class UserService {
     }
 
     public void reserveRoomIfFree() {
-        System.out.println("Podaj numer pokoju, który chcesz zarezerwować");
+        System.out.println("Podaj numer pokoju, który chcesz zarezerwować. Oto lista dostępnych pokoi: " + getAllAvailableRooms());
         int roomNumber = Integer.parseInt(scanner.next());
+        scanner.nextLine();
         for (Room room : rooms) {
             if (room.isAvailable() && room.getRoomNumber() == roomNumber) {
                 room.setAvailable(false);
